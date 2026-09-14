@@ -1,6 +1,15 @@
 ---
 name: spymaster
-description: Design, build, audit, and improve the harness around an LLM agent — its tools, loop, permissions, context, skills, and evals. Use when building, reviewing, or debugging any agentic system: an agent runtime or loop, agent-facing tools, an MCP server, an approval/permission flow, a context or memory strategy, an eval suite, or an existing agent that underperforms (flaky, wrong tool calls, retry loops, burning tokens) — even when the request just says "add a tool" or "make the agent do X" without naming a harness. Provider-neutral (OpenAI, Anthropic, MCP). Not for ordinary app features that don't change agent behavior, tool execution, context, permissions, or validation.
+description: >-
+  Design, build, audit, and improve the harness around an LLM agent — its tools,
+  loop, permissions, context, skills, and evals. Use when building, reviewing,
+  or debugging any agentic system: an agent runtime or loop, agent-facing tools,
+  an MCP server, an approval/permission flow, a context or memory strategy, an
+  eval suite, or an existing agent that underperforms (flaky, wrong tool calls,
+  retry loops, burning tokens) — even when the request just says "add a tool" or
+  "make the agent do X" without naming a harness. Provider-neutral (OpenAI,
+  Anthropic, MCP). Not for ordinary app features that don't change agent
+  behavior, tool execution, context, permissions, or validation.
 metadata:
   version: "1.0.0"
   scope: provider-neutral-agent-harness-design
