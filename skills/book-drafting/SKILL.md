@@ -1,18 +1,17 @@
 ---
 name: book-drafting
 description: >-
-  Draft, revise, or review chapters of the book "Agentic AI System Design:
-  Building Reliable Systems That Act" against its editorial standard — chapter
-  structure, evidence and citations, voice, diagrams, the book's analytical
-  lenses, and the Google Docs revision workflow. Use when writing or editing a
-  chapter, reviewing a chapter draft, addressing author comments in the
-  manuscript, or producing chapter diagrams. Not for other books or general
-  writing.
+  Draft, revise, or review chapters of the book "Agentic AI System Design"
+  against its editorial standard — chapter structure, evidence and citations,
+  voice, diagrams, the book's analytical lenses, and the Google Docs revision
+  workflow. Use when writing or editing a chapter, reviewing a chapter draft,
+  addressing author comments in the manuscript, or producing chapter diagrams.
+  Not for other books or general writing.
 ---
 
 # Book Drafting: Agentic AI System Design
 
-Editorial standard for every chapter iteration of *Agentic AI System Design: Building Reliable Systems That Act* (Arseny Kravchenko & team). Use it both to write and as the review checklist.
+Editorial standard for every chapter iteration of *Agentic AI System Design*. Use it both to write and as the review checklist.
 
 ## 1. Chapter architecture
 
@@ -38,7 +37,7 @@ Editorial standard for every chapter iteration of *Agentic AI System Design: Bui
 
 ## 3. Voice
 
-Arseny's register: dry, ironic, insider ML/systems engineer writing for senior practitioners. For line-level rewrites into this register, use the `tone-of-voice` skill if available.
+The book's register: dry, ironic, insider ML/systems engineer writing for senior practitioners. For line-level rewrites into this register, use the `tone-of-voice` skill if available.
 
 - **Anti-hype**: translate agent magic into distributed systems, compiler feedback loops, and state machines.
 - **Build-up → deflate**: acknowledge the academic or marketing promise, then deflate it with production failure modes.
