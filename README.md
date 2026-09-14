@@ -9,6 +9,7 @@ Just another collection of skills for coding agents.
 - `rust-webapp`: build full-stack Rust web apps with Axum, SQLx, HTMX + Alpine.js (or DataStar for SSE-heavy UIs), and Neon. No React, no TypeScript, no Webpack, no Vite, no Babel, no yarn, no pnpm.
 - `ml-project`: opinionated workflow for ML projects.
 - `cli-devex`: design, implement, and review CLIs for humans, scripts, CI, and agents — one operation model with human and machine presentations; positions on grammar, config trust, exit codes, envelopes, progress, crash-safe mutations, and contract tests.
+- `gdoc`: work with Google Docs and Drive through the [gdoc](https://github.com/LucaDeLeo/gdoc) CLI — read before mutating, smallest operation first (`edit` over `write`), narrow sharing scope, verify results instead of trusting exit codes.
 - `interactive`: session mode for working side by side — scannable actionable output, decisions surfaced as ranked choices instead of inferred, plain technical language. Manual trigger only, and the argument is required (`/interactive <task>`) - it names the first task to work on under the mode.
 
 Kudos for inspiration and ideas go to:
