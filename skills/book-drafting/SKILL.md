@@ -1,6 +1,13 @@
 ---
 name: book-drafting
-description: Draft, revise, or review chapters of the book "Agentic AI System Design: Building Reliable Systems That Act" against its editorial standard — chapter structure, evidence and citations, voice, diagrams, the book's analytical lenses, and the Google Docs revision workflow. Use when writing or editing a chapter, reviewing a chapter draft, addressing author comments in the manuscript, or producing chapter diagrams. Not for other books or general writing.
+description: >-
+  Draft, revise, or review chapters of the book "Agentic AI System Design:
+  Building Reliable Systems That Act" against its editorial standard — chapter
+  structure, evidence and citations, voice, diagrams, the book's analytical
+  lenses, and the Google Docs revision workflow. Use when writing or editing a
+  chapter, reviewing a chapter draft, addressing author comments in the
+  manuscript, or producing chapter diagrams. Not for other books or general
+  writing.
 ---
 
 # Book Drafting: Agentic AI System Design
