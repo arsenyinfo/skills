@@ -22,7 +22,7 @@ The reviewer's job is to shoot off dead branches: kill options that cannot work 
 
 ### 4. Discuss — the decision session
 
-The center of the loop. Bring the surviving options and every open decision to the user **one at a time**: context, the options with trade-offs, your recommendation. Everything affecting scope, observable behavior, API/data contracts, or acceptance criteria is settled here. A decision discovered later — by a review gate or during implementation — comes back here; it is never appended as an "open question" to a plan or bundled into approval. The discussion ends when nothing is left to decide.
+The center of the loop. Bring the surviving options and every open decision to the user **together, in one message**: a numbered list, each item with brief context, the options with trade-offs, and your recommendation, so the user answers by number. An unanswered item defaults to the recommendation only when the user says so. Decisions raised by the answers or by later gates come back as a new batch. Everything affecting scope, observable behavior, API/data contracts, or acceptance criteria is settled here. A decision discovered later — by a review gate or during implementation — comes back here; it is never appended as an "open question" to a plan or bundled into approval. The discussion ends when nothing is left to decide.
 
 ### 5. Finalize the plan
 
@@ -44,7 +44,7 @@ Commit without pushing, then gate the branch diff against the recorded base — 
 
 ### 9. Wrap up
 
-Write the Outcome. Walk any admitted follow-up blocks (SKILL.md admission test) with the user, one at a time: **fix now**, **drop**, or **record** — to wherever this project keeps work, inferred from the repo and its CLAUDE.md (a `memos/` dir, a tracker, a TODO file), or as a "known gaps" note in the PR description when it belongs with the change. Nothing survives only in /tmp. Working a recorded item later is a normal `build` task: re-verify its evidence against current code first.
+Write the Outcome. Walk any admitted follow-up blocks (SKILL.md admission test) with the user as one numbered batch, same format as step 4: **fix now**, **drop**, or **record** — to wherever this project keeps work, inferred from the repo and its CLAUDE.md (a `memos/` dir, a tracker, a TODO file), or as a "known gaps" note in the PR description when it belongs with the change. Nothing survives only in /tmp. Working a recorded item later is a normal `build` task: re-verify its evidence against current code first.
 
 ## Refactor profile
 
