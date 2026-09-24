@@ -25,7 +25,7 @@ Find the mechanism before fixing. This is a 5-why-like ladder, but every step mu
 7. **Root cause**: name the bad assumption, missing invariant, design gap, process gap, or dependency behavior behind the mechanism.
 8. **Fix options**: propose the smallest safe fix, any broader cleanup worth considering, and the test/monitoring check that prevents recurrence.
 
-If the mechanism is evident within the first evidence pass, collapse the remaining steps and go straight to the Output — do not manufacture an investigation. Fan out subagents for broad evidence sweeps; when an external reviewer is available (`nitpicker ask`, or the Codex companion when the evidence lives outside the repo — nitpicker's tools are repo-only), use it for a second opinion on a contested mechanism.
+If the mechanism is evident within the first evidence pass, collapse the remaining steps and go straight to the Output — do not manufacture an investigation. Fan out subagents for broad evidence sweeps; when an external reviewer is available (`skill: second-opinion`; prefer the Codex companion when the evidence lives outside the repo — nitpicker's tools are repo-only), use it for a second opinion on a contested mechanism.
 
 ## Evidence Map
 

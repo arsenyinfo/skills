@@ -2,7 +2,7 @@
 name: tokenmaxxer
 description: Serious engineering work behind a reviewed plan and adversarial review gates. The required first argument word picks the mode - `build`, `refactor`, `sweep`, or `experiment`. Invoke explicitly, e.g. `/tokenmaxxer refactor <component>`.
 argument-hint: "build <task>  |  refactor <component>  |  sweep <area>  |  experiment <goal>"
-compatibility: "requires an external review tool — nitpicker, codex, or opencode, resolved by references/get_reviewer.sh; sweep additionally needs the gh CLI and a git repo with a remote; experiment additionally needs a runnable eval command in the target repo"
+compatibility: "requires an external review tool — nitpicker, codex, or opencode, resolved by the second-opinion skill; sweep additionally needs the gh CLI and a git repo with a remote; experiment additionally needs a runnable eval command in the target repo"
 ---
 
 Serious work mode. Task: $ARGUMENTS
@@ -19,7 +19,7 @@ Load only your mode's file and never blend two modes' policies: attended modes p
 
 ## REVIEW — the cross-review primitive
 
-`REVIEW(target, reviewer)` — resolve the reviewer once at launch: `references/get_reviewer.sh <repo>` picks the first available of `nitpicker`, `codex`, `opencode` and prints its invocation contract — follow it for every gate. An explicit user choice overrides the pick (pass it as the second argument). Then:
+`REVIEW(target, reviewer)` — resolve the reviewer once at launch via `skill: second-opinion` — its `get_reviewer.sh <repo>` picks the first available of `nitpicker`, `codex`, `opencode` and prints its invocation contract — follow it for every gate. An explicit user choice overrides the pick (pass it as the second argument). Then:
 
 1. Run the external reviewer on the target, adversarially: find the strongest reason this should not proceed, not reasons it is probably fine.
 2. Triage each finding, noting what you skip and why: **blocker / P1** (wrong behavior, data loss, security, race, silently swallowed error) — fix always; **major / P2** (maintainability or missing behavior coverage beyond one local spot) — fix this round; **minor / P3** (local naming, style, structure) — fix only if already touching that code; **cosmetic** — skip. Skipped minors and cosmetics die with the round — at most one summary line, never a follow-up block.

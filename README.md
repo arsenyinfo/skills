@@ -6,6 +6,7 @@ Just another collection of skills for coding agents.
 - `spymaster`: design, build, and audit the harness around an LLM agent — tools, loop, permissions, context, MCP surface, and evals. The model proposes; the harness disposes.
 - `dialectic`: prove and counter-prove claims with parallel agents before concluding. 
 - `investigate`: evidence-first debugging and root cause investigation. 
+- `second-opinion`: independent review from another model via [nitpicker](https://github.com/arsenyinfo/nitpicker) (or codex / opencode) — diffs, PRs, existing code, plans, claims.
 - `rust-webapp`: build full-stack Rust web apps with Axum, SQLx, HTMX + Alpine.js (or DataStar for SSE-heavy UIs), and Neon. No React, no TypeScript, no Webpack, no Vite, no Babel, no yarn, no pnpm.
 - `ml-project`: opinionated workflow for ML projects.
 - `cli-devex`: design, implement, and review CLIs for humans, scripts, CI, and agents — one operation model with human and machine presentations; positions on grammar, config trust, exit codes, envelopes, progress, crash-safe mutations, and contract tests.
