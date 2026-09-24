@@ -34,7 +34,8 @@ nitpicker
   gate targets less. It uses universal default review criteria.
   Everything else (options, plans, positive confirmations, surveys): `nitpicker ask
   [--context-file <path>] "<question>"` — ask preserves dissent, and --context-file carries
-  docs that live outside the repo. A GitHub PR: `nitpicker pr [<url>]`. Existing code with
+  docs that live outside the repo. A GitHub PR: `nitpicker pr --no-comment [<url>]` —
+  drop --no-comment only when the user asked to post the review. Existing code with
   no diff: `nitpicker --analyze <path>`. At gates, demand an explicit confirmed/refuted verdict;
   anything short of explicit confirmation is a block.
   nitpicker is built for agent callers — bounded report, meaningful exit codes, session

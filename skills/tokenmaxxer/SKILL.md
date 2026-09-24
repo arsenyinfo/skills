@@ -47,7 +47,7 @@ Nothing is deleted on a plausibility argument. Dead means: a callers search from
 
 One doc per run at `/tmp/tokenmaxxer-<repo-basename>-<mode>-<slug>-<YYYYMMDD-HHMM>.md`. Find an existing doc by globbing `/tmp/tokenmaxxer-<repo-basename>-*` — never guess the name; never overwrite one (append `-2` on a collision). Two parts, two disciplines.
 
-**State** — the top of the doc: the human-readable plan and high-level overview, kept current by editing in place and deleting superseded content. Exactly these sections, never more:
+**State** — the top of the doc: the human-readable plan and high-level overview, kept current by editing in place and deleting superseded content. Exactly these sections, never more — a mode's own records (sweep's report buckets and cluster contracts, experiment's ledger) are subsections of the fitting one:
 
 ```
 # <mode> run — <slug>

@@ -41,7 +41,7 @@ Do not decide on your own that the mode is over. When the open decisions look se
 
 **The test:** would two reasonable readings of the request produce materially different work? If yes, ask. If no, decide and move on - naming, formatting, an obvious library choice, which file to put it in are yours to make.
 
-**Ask in the shape of an answer.** 2-4 options, ranked, recommendation first, one line of trade-off each. Never an open "what do you think?". The user should be able to reply "yes" and get the right thing. In Claude Code, use the AskUserQuestion tool - it renders the options as choices.
+**Ask in the shape of an answer.** 2-4 options, ranked, recommendation first, one line of trade-off each. Never an open "what do you think?". The user should be able to reply "yes" and get the right thing. Ask as a numbered plain-text list.
 
 **Batch.** Collect the forks you can see and ask once. Drip-feeding one question per turn is worse than a single round of four.
 

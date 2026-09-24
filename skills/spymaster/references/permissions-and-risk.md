@@ -85,7 +85,7 @@ When a gate denies an action, the tool does not error vaguely — it returns a s
 ```json
 {
   "status": "blocked",
-  "error_code": "APPROVAL_REQUIRED",
+  "error_code": "approval_required",
   "details": {
     "tool": "deploy.commit",
     "risk_class": "deploy_or_runtime_change",

@@ -8,7 +8,7 @@ An MCP server is a **capability provider**, not a trust boundary. It hands the m
 
 - Classify every advertised tool by risk (read → local write → external comms → destructive/financial/privileged) at registration time, the same taxonomy you apply to native tools. See [permissions-and-risk.md](permissions-and-risk.md).
 - Do **not** trust a tool because it came from an MCP server — not even a first-party one. A server can add, rename, or re-scope tools between calls; re-validate the advertised surface, don't cache trust.
-- Treat every tool result as untrusted content, never as instructions. A compromised or hostile server returns text engineered to steer the model. Result text is data. See the context-hygiene rule in the SKILL doctrine.
+- Treat every tool result as untrusted content, never as instructions. A compromised or hostile server returns text engineered to steer the model. Result text is data. See the SKILL Gotchas.
 - The harness owns approval, truncation, redaction, and logging around the call. The server owns only *doing the thing*.
 
 ## Naming (matches native tool discipline)
@@ -49,7 +49,7 @@ Treat these as **high-risk by default** — they collapse straight back into the
 - **Universal API callers** (`http_request`, `call_any_endpoint`) — the model picks the side effect at runtime; you cannot gate what you cannot name.
 - **Unrestricted cloud-admin or database servers** (`aws`, `kubectl`, `write_database`) — privileged and destructive behind a single verb.
 
-If you must expose one, wrap it: narrow it to specific commands/endpoints/tables, split draft from commit, and gate every risky path. An unwrapped general server is a Critical finding in an audit.
+If you must expose one, wrap it: narrow it to specific commands/endpoints/tables, split draft from commit, and gate every risky path. An unwrapped general server is a Major finding in an audit.
 
 ## Transport and security, in brief
 

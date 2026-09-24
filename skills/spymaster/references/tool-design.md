@@ -60,7 +60,7 @@ Return semantic fields, not machine plumbing. `{"name": "invoice.pdf", "file_typ
 This is the center of the whole design. **Every result is the next observation** — the sole thing the model sees before its next move. A result that doesn't tell the model what happened and what to do next forces a guess. Adopt one standard shape across every tool:
 
 ```
-{ status: "success" | "partial" | "blocked" | "error",
+{ status: "success" | "partial" | "blocked" | "failed",
   summary, details, evidence, next_actions,
   retryable, error_code, suggested_fix }
 ```
@@ -77,7 +77,7 @@ Success — say what happened and what's now valid:
 Error — a stable machine-readable `error_code`, the exact failing input, a fix, and how to verify it:
 
 ```json
-{ "status": "error", "error_code": "not_found",
+{ "status": "failed", "error_code": "not_found",
   "summary": "No customer for email 'user@example.com'.",
   "evidence": { "queried_email": "user@example.com" },
   "retryable": false,

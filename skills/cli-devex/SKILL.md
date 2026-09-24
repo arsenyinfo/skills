@@ -166,7 +166,7 @@ centralize output policy when several commands share it.
   nullability, ordering, and absent-versus-null are public. Omit optional keys
   rather than emitting `null`. Bump `schema_version` when a field changes
   meaning, not only when keys change.
-- **Every failure in machine mode still produces one envelope**, including
+- **Every post-parse failure in machine mode still produces one envelope**, including
   config-load and auth failures, with a non-zero exit. The write is
   best-effort: a consumer who cannot read the envelope still gets the exit.
 - Side effects run before the envelope is emitted so it reports their real
@@ -282,7 +282,7 @@ Support discover, inspect, act, verify or recover; add only what the domain
 needs.
 
 - Document the subprocess contract in one place: streams, exit codes, the
-  one-line envelope, that stdin is never read, side-effect writes and how to
+  one-line envelope, that stdin is read only for an explicit `-`, side-effect writes and how to
   disable them, and that a timeout must kill the process group (blocking child
   processes do not get the signal otherwise).
 - Calls are independent: explicit IDs, paths, base revisions, and context per

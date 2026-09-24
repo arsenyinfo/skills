@@ -63,7 +63,6 @@ project/
 ├── data/
 │   ├── raw/            # immutable source data
 │   └── processed/      # transformed data
-├── models/             # saved model artifacts
 ├── memos/              # experiment results, markdown
 ├── configs/            # YAML job configs
 ├── experiments/        # timestamped run outputs

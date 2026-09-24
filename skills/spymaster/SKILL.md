@@ -13,7 +13,6 @@ description: >-
 metadata:
   version: "1.0.0"
   scope: provider-neutral-agent-harness-design
-  file_policy: markdown-only
 ---
 
 # spymaster
@@ -67,7 +66,7 @@ Every design and audit decision traces back to one of these. They are stated onc
 4. **Narrow, typed, non-collapsing tools.** One verb, one meaning. The agent must never have to guess between `get_file`, `fetch_file`, and `download_file`. Prefer `search_contacts(query)` over a `list_contacts()` that dumps the world, and `read_customer_record` over `get_data`. See [tool-design](references/tool-design.md).
 5. **Names and descriptions are engineered contracts.** Write the description as you'd brief a new hire: what it does, when to use it, when *not* to, side effects, result shape. Don't overspecify to every past failure — that's overfitting. If behavior is load-bearing, move it into schema, enums, validators, or structured errors.
 6. **Draft and commit are separate for anything risky.** `prepare_deploy` before `deploy`, `draft_email` before `send_email`, `preview_migration` before `apply_migration`. The first stage produces a reviewable artifact; the second performs the side effect. See [permissions-and-risk](references/permissions-and-risk.md).
-7. **Every result is an observation, including failure.** A tool result is the next input to the loop. It must say what happened, whether it succeeded/partially/blocked/failed, what evidence, what to do next, whether retry helps, and what deterministic check verifies the fix. Never return `Error: failed`. See [tool-design § results](references/tool-design.md).
+7. **Every result is an observation, including failure.** A tool result is the next input to the loop. It must say what happened, whether it succeeded/partially/blocked/failed, what evidence, what to do next, whether retry helps, and what deterministic check verifies the fix. Never return `Error: failed`. See [tool-design § the result envelope](references/tool-design.md).
 8. **Progressive disclosure everywhere.** Skills, connectors, and tool surfaces reveal detail on demand — metadata first, body on trigger, deep files/scripts only when needed. Don't front-load every capability into context. See [context-and-skills](references/context-and-skills.md).
 9. **One recommended way to do X.** Pick a default and document it; frame alternatives as exceptions with a stated trigger. Option paralysis is a harness defect. If synonyms must exist, the harness aliases them internally and the model sees one canonical surface.
 10. **Scaffolding is a tool, not a prompt.** A `scaffold_project(type)` that emits correct, validated boilerplate beats 500 words describing structure. Derive from a manifest; don't let the model guess plugin names, paths, or resource keys.
