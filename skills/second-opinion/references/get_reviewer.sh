@@ -30,8 +30,9 @@ case "$choice" in
   nitpicker) cat <<'EOF'
 nitpicker
   Diff gates: run `nitpicker` from the branch. It reviews
-  uncommitted changes plus branch commits vs the default branch — scope the prompt when the
-  gate targets less. It uses universal default review criteria.
+  uncommitted changes plus branch commits vs the default branch — scope it with
+  `--prompt "<scope>"` when the gate targets less (there is no positional prompt). It uses
+  universal default review criteria.
   Everything else (options, plans, positive confirmations, surveys): `nitpicker ask
   [--context-file <path>] "<question>"` — ask preserves dissent, and --context-file carries
   docs that live outside the repo. A GitHub PR: `nitpicker pr --no-comment [<url>]` —

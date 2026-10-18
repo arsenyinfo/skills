@@ -11,6 +11,7 @@ Just another collection of skills for coding agents.
 - `ml-project`: opinionated workflow for ML projects.
 - `cli-devex`: design, implement, and review CLIs for humans, scripts, CI, and agents — one operation model with human and machine presentations; positions on grammar, config trust, exit codes, envelopes, progress, crash-safe mutations, and contract tests.
 - `gdoc`: work with Google Docs and Drive through the [gdoc](https://github.com/LucaDeLeo/gdoc) CLI — read before mutating, smallest operation first (`edit` over `write`), narrow sharing scope, verify results instead of trusting exit codes.
+- `wrap-up`: end-of-session sweep — leftovers this session created (worktrees, processes, remote and shared state), loose ends that live only in chat, and context gaps routed to the skill, CLAUDE.md, hook, or setting that should own them. Manual trigger only; proposes, then acts on approval.
 - `interactive`: session mode for working side by side — scannable actionable output, decisions surfaced as ranked choices instead of inferred, plain technical language. Manual trigger only, and the argument is required (`/interactive <task>`) - it names the first task to work on under the mode.
 
 Kudos for inspiration and ideas go to:
