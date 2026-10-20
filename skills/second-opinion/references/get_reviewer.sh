@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Resolve the external reviewer for a run and print how to drive it.
-# Priority: nitpicker > codex. First line is the reviewer name;
+# Priority: nitpicker > codex > opencode. First line is the reviewer name;
 # the rest is its invocation contract. Exits 1 when none fits.
 # Usage: get_reviewer.sh [repo] [reviewer] — name a reviewer to skip detection.
 set -euo pipefail
@@ -18,8 +18,10 @@ if [[ -z "$choice" ]]; then
     choice=nitpicker
   elif command -v codex >/dev/null 2>&1; then
     choice=codex
+  elif command -v opencode >/dev/null 2>&1; then
+    choice=opencode
   else
-    echo "no reviewer found: install nitpicker or codex" >&2
+    echo "no reviewer found: install nitpicker, codex, or opencode" >&2
     exit 1
   fi
 fi
@@ -58,8 +60,16 @@ codex
   Non-zero exit, no reply, or no explicit verdict is a block — fail closed.
 EOF
     ;;
+  opencode) cat <<'EOF'
+opencode
+  Run `opencode run "<target + review criteria + adversarial framing + 'read-only: do not
+  modify any file' + 'end with an explicit confirmed/refuted verdict'>"` in the foreground.
+  Read-only is only requested, not enforced — check `git status` afterwards. Non-zero exit
+  or no explicit verdict is a block — fail closed.
+EOF
+    ;;
   *)
-    echo "unknown reviewer: $choice (expected nitpicker or codex)" >&2
+    echo "unknown reviewer: $choice (expected nitpicker, codex, or opencode)" >&2
     exit 1
     ;;
 esac

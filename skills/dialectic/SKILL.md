@@ -2,7 +2,7 @@
 name: dialectic
 description: Prove and counter-prove a claim with parallel agents before concluding. Use for architecture claims, bug hypotheses, performance claims, refactor safety, review judgments, and "is this actually true?" questions.
 argument-hint: "<claim>"
-compatibility: "the second-opinion skill (nitpicker or codex) is recommended"
+compatibility: "the second-opinion skill (nitpicker, codex, or opencode) is recommended"
 ---
 
 Run a dialectic check on: $ARGUMENTS

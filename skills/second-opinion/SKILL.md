@@ -1,8 +1,8 @@
 ---
 name: second-opinion
-description: Get an independent review from another model through nitpicker (falling back to codex) — of a diff, a GitHub PR, existing code, a plan, or a contested claim. Use when asked to run nitpicker, get a second opinion, or have another model review something, and whenever another skill needs an external reviewer.
+description: Get an independent review from another model through nitpicker (falling back to codex or opencode) — of a diff, a GitHub PR, existing code, a plan, or a contested claim. Use when asked to run nitpicker, get a second opinion, or have another model review something, and whenever another skill needs an external reviewer.
 argument-hint: "[target or question]"
-compatibility: "requires an external review tool — nitpicker (preferred) or codex"
+compatibility: "requires an external review tool — nitpicker (preferred), codex, or opencode"
 ---
 
 Second opinion on: $ARGUMENTS
