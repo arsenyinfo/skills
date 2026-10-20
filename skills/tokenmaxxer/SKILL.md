@@ -1,8 +1,8 @@
 ---
 name: tokenmaxxer
 description: Serious engineering work behind a reviewed plan and adversarial review gates. The required first argument word picks the mode - `build`, `refactor`, `sweep`, or `experiment`. Invoke explicitly, e.g. `/tokenmaxxer refactor <component>`.
-argument-hint: "build <task>  |  refactor <component>  |  sweep <area>  |  experiment <goal>"
-compatibility: "requires an external review tool — nitpicker, codex, or opencode, resolved by the second-opinion skill; sweep additionally needs the gh CLI and a git repo with a remote; experiment additionally needs a runnable eval command in the target repo"
+argument-hint: "build <task>  |  refactor [component]  |  sweep <area>  |  experiment <goal>"
+compatibility: "requires an external review tool — nitpicker, codex, or opencode, resolved by the second-opinion skill; sweep additionally needs the gh CLI and a git repo with a remote; experiment additionally needs a runnable eval command in the target repo; refactor auto-select needs uv"
 ---
 
 Serious work mode. Task: $ARGUMENTS
@@ -11,7 +11,7 @@ Serious work mode. Task: $ARGUMENTS
 
 The first word of `$ARGUMENTS` is the mode — required, never guessed, never part of the task. If it is not exactly one of the four below, say the keyword is required and ask which one. The keyword is a safety property: `sweep` opens PRs while the user is asleep, so it must never be reached by inference.
 
-- **`build <task>`** and **`refactor <component>`** → `references/attended.md`. Attended: the user is present, approves the plan, and settles the key decisions. `refactor` is build plus a behavior-preservation profile for one accreted component; a codebase-wide rename or pattern migration is `build`.
+- **`build <task>`** and **`refactor <component>`** → `references/attended.md`. Attended: the user is present, approves the plan, and settles the key decisions. `refactor` is build plus a behavior-preservation profile for one accreted component — omit the component to have one suggested from repo statistics; a codebase-wide rename or pattern migration is `build`.
 - **`sweep <area>`** → `references/sweep.md`. Unattended overnight cleanup shipping draft PRs. Never asks once launched; the named area, fixed at launch, is its consent boundary.
 - **`experiment <goal>`** → `references/experiment.md`. Metric-driven experimentation. Attended at the ends; autonomous mid-batch strictly under the approved hypothesis tree.
 
