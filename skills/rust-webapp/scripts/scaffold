@@ -5,7 +5,7 @@
 # Creates app directory, copies template, sets up Neon branch
 # Requires: NEON_API_KEY, NEON_PROJECT_ID env vars
 
-set -e
+set -eo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SKILL_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -51,7 +51,7 @@ mkdir -p "$OUTPUT_DIR"
 for entry in "$TEMPLATE_DIR"/* "$TEMPLATE_DIR"/.[!.]* .env; do
     name=$(basename "$entry")
     case "$name" in target|Cargo.lock|'.[!.]*') continue ;; esac
-    if [ -e "$OUTPUT_DIR/$name" ]; then
+    if [ -e "$OUTPUT_DIR/$name" ] || [ -L "$OUTPUT_DIR/$name" ]; then
         echo "Error: $OUTPUT_DIR/$name already exists - scaffold into an empty directory"
         exit 1
     fi

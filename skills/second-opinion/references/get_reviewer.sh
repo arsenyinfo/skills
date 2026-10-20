@@ -64,7 +64,8 @@ EOF
 opencode
   Run `opencode run "<target + review criteria + adversarial framing + 'read-only: do not
   modify any file' + 'end with an explicit confirmed/refuted verdict'>"` in the foreground.
-  Record `git status --porcelain` before and after: any change means the reviewer wrote to
+  Snapshot the tree before and after — `git status --porcelain` plus
+  `git ls-files -mo --exclude-standard -z | xargs -0 shasum` — any difference means it wrote to
   the tree — discard nothing yourself, treat it as a block and surface it. Non-zero exit or
   no explicit verdict is a block — fail closed.
 EOF

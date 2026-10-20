@@ -88,7 +88,7 @@ Anything failing the test dies with its review round or gets one summary line. A
 
 ## Escalation
 
-When implementation proves the approved scope, externally observable behavior, an API or data contract, or the acceptance criteria must change: stop and route it to the mode's approver — attended: a focused discussion with the user (`attended.md`); sweep: a *needs-your-call* entry in the run doc; experiment: a parked next-batch proposal. Never smuggle a contract change into a local fix.
+When implementation proves the approved scope, externally observable behavior beyond the approved intent, an API or data contract, or the acceptance criteria must change: stop and route it to the mode's approver — attended: a focused discussion with the user (`attended.md`); sweep: a *needs-your-call* entry in the run doc; experiment: a parked next-batch proposal. Never smuggle a contract change into a local fix.
 
 ---
 
