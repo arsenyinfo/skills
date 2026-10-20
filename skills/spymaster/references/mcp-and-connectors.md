@@ -62,7 +62,7 @@ If you must expose one, wrap it: narrow it to specific commands/endpoints/tables
 
 - [ ] **User consent** recorded before a server is connected and before privileged tools run.
 - [ ] **Tool allowlist** — only explicitly permitted tools are callable, not the whole advertised menu.
-- [ ] **Approval gates** on every write/external/destructive/financial/privileged tool (draft → commit).
+- [ ] **Approval gates** per the permission matrix in `permissions-and-risk.md` — the same risk classes and exceptions as native tools; external, destructive, financial, and privileged tools always gate (draft → commit).
 - [ ] **Result truncation** with a hard cap, independent of what the server returns.
 - [ ] **Secret redaction** on inbound results *and* outbound args — credentials never reach the model or the trace.
 - [ ] **Logging** of every call: tool, args (redacted), risk class, permission decision, outcome.

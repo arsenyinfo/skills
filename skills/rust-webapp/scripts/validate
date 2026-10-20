@@ -57,7 +57,7 @@ cargo check
 echo "PASS"
 
 echo "=== cargo clippy (warnings = errors) ==="
-cargo clippy -- -D warnings
+cargo clippy --all-targets -- -D warnings
 echo "PASS"
 
 echo "=== cargo test ==="

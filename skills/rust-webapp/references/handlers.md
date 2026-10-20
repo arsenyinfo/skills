@@ -2,15 +2,23 @@
 
 ## AppError Type
 
-The template includes `AppError` for proper error handling. All handlers return `Result<T, AppError>`.
+The template includes `AppError` for proper error handling. All handlers return `Result<T, AppError>`. The template's version maps every error to 500; when adding the first UPDATE/DELETE handler, replace it with this one so a missing row returns 404 (adding the variant earlier leaves it unused, which clippy rejects):
 
 ```rust
-pub struct AppError(anyhow::Error);
+pub enum AppError {
+    NotFound,
+    Internal(anyhow::Error),
+}
 
 impl IntoResponse for AppError {
     fn into_response(self) -> Response {
-        tracing::error!("Application error: {}", self.0);
-        (StatusCode::INTERNAL_SERVER_ERROR, "Something went wrong").into_response()
+        match self {
+            Self::NotFound => (StatusCode::NOT_FOUND, "Not found").into_response(),
+            Self::Internal(err) => {
+                tracing::error!("Application error: {err}");
+                (StatusCode::INTERNAL_SERVER_ERROR, "Something went wrong").into_response()
+            }
+        }
     }
 }
 
@@ -19,7 +27,7 @@ where
     E: Into<anyhow::Error>,
 {
     fn from(err: E) -> Self {
-        Self(err.into())
+        Self::Internal(err.into())
     }
 }
 ```
@@ -84,7 +92,7 @@ async fn update_task(
     .await?;
 
     if result.rows_affected() == 0 {
-        return Err(anyhow::anyhow!("Task not found").into());
+        return Err(AppError::NotFound);
     }
     Ok(Redirect::to("/"))
 }
@@ -99,7 +107,7 @@ async fn delete_task(
         .await?;
 
     if result.rows_affected() == 0 {
-        return Err(anyhow::anyhow!("Task not found").into());
+        return Err(AppError::NotFound);
     }
     Ok(Html(""))
 }

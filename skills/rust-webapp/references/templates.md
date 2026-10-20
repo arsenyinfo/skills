@@ -107,10 +107,10 @@ Use `{% block head %}` for page-specific additions.
 {% block content %}
 <h1>Edit Task</h1>
 
-<form hx-post="/{{ task.id }}" hx-target="body" x-data="{ title: '{{ task.title }}' }">
+<form hx-post="/{{ task.id }}" hx-target="body">
     <label>
         Title
-        <input type="text" name="title" x-model="title" required>
+        <input type="text" name="title" value="{{ task.title }}" required>
     </label>
     <button type="submit">Save</button>
 </form>

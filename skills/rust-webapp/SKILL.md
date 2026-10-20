@@ -24,9 +24,9 @@ brew install jq
 cargo install sqlx-cli --features postgres,native-tls
 ```
 
-Scaffold app (`{skill_dir}` = the directory containing this SKILL.md):
+Scaffold app:
 ```bash
-NEON_BRANCH_TTL=2h {skill_dir}/scripts/scaffold <app-name> .
+NEON_BRANCH_TTL=2h ${CLAUDE_SKILL_DIR}/scripts/scaffold <app-name> .
 ```
 
 Creates app files and a Neon branch (`{app}-dev`) with 2h expiration.
@@ -68,7 +68,7 @@ Reference: [DataStar](./references/datastar.md) - when to prefer it in this Rust
 
 Validate (runs cargo check, clippy, tests, release build):
 ```bash
-{skill_dir}/scripts/validate .
+${CLAUDE_SKILL_DIR}/scripts/validate .
 ```
 
 Fix all errors before completing.
@@ -76,7 +76,7 @@ Fix all errors before completing.
 ## When Things Fail
 
 - **Missing `NEON_API_KEY`/`NEON_PROJECT_ID`**: ask the user to export them, then rerun scaffold - it detects the partial run and redoes only the Neon step.
-- **Migration checksum mismatch**: never edit an already-applied migration - revert the edit and add a new migration file. Last resort (dev only, destroys data): `{skill_dir}/scripts/validate . --reset`.
+- **Migration checksum mismatch**: never edit an already-applied migration - revert the edit and add a new migration file. Last resort (dev only, destroys data): `${CLAUDE_SKILL_DIR}/scripts/validate . --reset`.
 - **Clippy failures**: fix the code, never silence with `#[allow(...)]`.
 
 ## Template Structure

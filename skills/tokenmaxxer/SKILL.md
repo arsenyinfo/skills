@@ -2,6 +2,7 @@
 name: tokenmaxxer
 description: Serious engineering work behind a reviewed plan and adversarial review gates. The required first argument word picks the mode - `build`, `refactor`, `sweep`, or `experiment`. Invoke explicitly, e.g. `/tokenmaxxer refactor <component>`.
 argument-hint: "build <task>  |  refactor [component]  |  sweep <area>  |  experiment <goal>"
+disable-model-invocation: true
 compatibility: "requires an external review tool — nitpicker, codex, or opencode, resolved by the second-opinion skill; sweep additionally needs the gh CLI and a git repo with a remote; experiment additionally needs a runnable eval command in the target repo; refactor auto-select needs uv"
 ---
 

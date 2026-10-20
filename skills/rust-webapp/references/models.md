@@ -25,7 +25,7 @@ Benefits:
 - Column types checked against Rust struct
 - Typos in column/table names caught immediately
 
-**Requirement**: Database schema must exist at compile time. Run `./scripts/neon-setup` before `cargo build`.
+**Requirement**: Database schema must exist at compile time. `validate` applies migrations before compiling; outside it, run `sqlx migrate run` (with `.env` sourced) before `cargo build`.
 
 ## Model Structs
 

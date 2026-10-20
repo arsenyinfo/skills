@@ -126,22 +126,8 @@ setup() {
         echo "export DATABASE_URL='$DEV_URI'"
     } > "$APP_DIR/.env"
     echo ""
-    echo "Written to .env:"
-    cat "$APP_DIR/.env"
-
-    # run migrations if migrations directory exists
-    if [ -d "$APP_DIR/migrations" ] && [ -n "$(ls -A "$APP_DIR/migrations" 2>/dev/null)" ]; then
-        echo ""
-        if command -v sqlx &> /dev/null; then
-            echo "Running migrations..."
-            (cd "$APP_DIR" && source .env && sqlx migrate run)
-            echo "Migrations complete"
-        else
-            echo "WARN: sqlx-cli not installed, skipping migrations"
-            echo "Install: cargo install sqlx-cli --features postgres,native-tls"
-            echo "Then run: source .env && sqlx migrate run"
-        fi
-    fi
+    echo "DATABASE_URL for branch $DEV_BRANCH written to $APP_DIR/.env"
+    echo "Migrations are not applied here; validate applies them once the schema is written"
 }
 
 case "$COMMAND" in

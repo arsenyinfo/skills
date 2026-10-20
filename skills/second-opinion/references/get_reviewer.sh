@@ -29,35 +29,44 @@ fi
 case "$choice" in
   nitpicker) cat <<'EOF'
 nitpicker
-  Diff gates: run `nitpicker` from the branch. It reviews
-  uncommitted changes plus branch commits vs the default branch — scope it with
-  `--prompt "<scope>"` when the gate targets less (there is no positional prompt). It uses
-  universal default review criteria.
+  Diff gates: run `nitpicker` from the branch. It reviews uncommitted changes plus branch
+  commits vs the default branch, and has no base flag. `--prompt "<...>"` (there is no
+  positional prompt) carries the gate's review criteria and refute instruction — always pass
+  them, since the built-in criteria are generic — plus a scope note when the gate targets
+  less. A gate whose diff is not "uncommitted + branch vs default" (another base, one
+  cluster's change) goes through `ask` with the diff written to a file and passed as
+  --context-file.
   Everything else (options, plans, positive confirmations, surveys): `nitpicker ask
   [--context-file <path>] "<question>"` — ask preserves dissent, and --context-file carries
   docs that live outside the repo. A GitHub PR: `nitpicker pr --no-comment [<url>]` —
   drop --no-comment only when the user asked to post the review. Existing code with
-  no diff: `nitpicker --analyze <path>`. At gates, demand an explicit confirmed/refuted verdict;
-  anything short of explicit confirmation is a block.
+  no diff: `nitpicker --analyze <path>`.
   nitpicker is built for agent callers — bounded report, meaningful exit codes, session
   persisted under ~/.nitpicker/sessions — so defensive wrappers only subtract. Run it
   bare and foreground and read the full report: `| tail` masks the exit code and cuts
   findings; retry/`until` loops retry away a block; backgrounding adds polling for nothing.
   Verdict contract: non-zero exit (1 hard failure, 3 degraded) is reviewer failure — fail
-  closed. Exit 0 means the run was healthy; the only no-findings pass is the exact output
-  `No findings. Great job! 🎉` — anything else is findings to triage.
+  closed. Diff, PR, and analyze runs: exit 0 with the exact output
+  `No findings. Great job! 🎉` is a clean pass; anything else is findings to triage. `ask`
+  gates: demand an explicit confirmed/refuted verdict in the question; anything short of
+  explicit confirmation is a block.
 EOF
     ;;
   codex) cat <<'EOF'
 codex
-  Invoke the `codex:codex-rescue` background agent (Agent tool) with the target and the
-  adversarial framing in its prompt. No reply or a non-verdict reply is a block — fail closed.
+  Run `codex exec --sandbox read-only -C <repo> "<target + review criteria + adversarial
+  framing + 'end with an explicit confirmed/refuted verdict'>"` in the foreground; for a diff,
+  name the exact range (`git diff <base>...HEAD`, or uncommitted changes) in the prompt.
+  Non-zero exit, no reply, or no explicit verdict is a block — fail closed.
 EOF
     ;;
   opencode) cat <<'EOF'
 opencode
-  Run `opencode run "<target + adversarial framing>"`. Non-zero exit or no verdict is a
-  block — fail closed.
+  Run `opencode run "<target + review criteria + adversarial framing + 'read-only: do not
+  modify any file' + 'end with an explicit confirmed/refuted verdict'>"` in the foreground.
+  Record `git status --porcelain` before and after: any change means the reviewer wrote to
+  the tree — discard nothing yourself, treat it as a block and surface it. Non-zero exit or
+  no explicit verdict is a block — fail closed.
 EOF
     ;;
   *)

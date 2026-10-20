@@ -46,10 +46,17 @@ echo "Template: $TEMPLATE_DIR"
 echo "Output: $OUTPUT_DIR"
 echo ""
 
-# copy template (exclude build artifacts)
+# copy template (exclude build artifacts), never over existing files
 mkdir -p "$OUTPUT_DIR"
-cp -r "$TEMPLATE_DIR"/* "$OUTPUT_DIR/"
-rm -rf "$OUTPUT_DIR/target" "$OUTPUT_DIR/Cargo.lock" "$OUTPUT_DIR/.env"
+for entry in "$TEMPLATE_DIR"/* "$TEMPLATE_DIR"/.[!.]* .env; do
+    name=$(basename "$entry")
+    case "$name" in target|Cargo.lock|'.[!.]*') continue ;; esac
+    if [ -e "$OUTPUT_DIR/$name" ]; then
+        echo "Error: $OUTPUT_DIR/$name already exists - scaffold into an empty directory"
+        exit 1
+    fi
+done
+tar -C "$TEMPLATE_DIR" --exclude=./target --exclude=./Cargo.lock --exclude=./.env -cf - . | tar -C "$OUTPUT_DIR" -xf -
 touch "$MARKER"
 
 echo "Template copied"
